@@ -43,19 +43,19 @@ Missing work for DATA001:
 
 - Finished Section 4 content covering maps, structs, keyword lists, schemas, changesets, and NimbleOptions.
 - Runnable examples for boundary conversion, default NimbleOptions validation, and stable typed structs.
-- Eval prompts for data-shape selection and option-schema design.
+- Add more eval prompts only if new Section 4 guidance introduces additional failure modes. Current eval coverage includes typed-struct boundary conversion and NimbleOptions defaults.
 
 Missing work for ERR001:
 
 - Finished Section 6 content covering tagged tuples, exceptions, error structs, context boundaries, process crashes, and supervisor semantics.
 - Runnable examples for atom-based error returns, error normalization, and crash-worthy configuration.
-- Eval prompts for expected versus exceptional failure and for asking clarification on process failure semantics.
+- Add more eval prompts only if new Section 6 guidance introduces additional failure modes. Current eval coverage includes simple error shapes, exceptional failures, and clarification on process failure semantics.
 
 Missing work for OTP001:
 
 - Finished Sections 7 and 8 content covering plain functions versus Task, GenServer, Agent, Registry, DynamicSupervisor, restart strategies, and state recovery.
 - Runnable examples for plain-function-first design, supervised processes, restart behavior, Registry/DynamicSupervisor, message protocols, and avoiding unnecessary GenServers or Agents.
-- Eval prompts for process selection and supervision design.
+- Add more eval prompts only if new Sections 7 and 8 guidance introduces additional failure modes. Current eval coverage includes plain-functions-first process selection and failure-semantics clarification.
 
 ## Priority 2: Add High-Value Rule Cards
 
@@ -70,16 +70,21 @@ Missing work for OTP001:
 
 Add eval prompts for:
 
-- Observability boundary selection.
-- PubSub message design.
 - Phoenix context placement when Phoenix is present.
 - Ecto validation placement when Ecto is present.
-- Supervision restart strategy.
 - External API adapter design.
 - Refactoring a large module without expanding public API.
 
 Completed eval coverage:
 
+- Data boundary conversion and typed structs.
+- NimbleOptions defaults for public options.
+- Simple public error shapes.
+- Expected versus exceptional failures.
+- Process failure clarification.
+- Plain-functions-first OTP selection.
+- Observability boundary selection.
+- PubSub message design.
 - Test double and behaviour selection.
 - Req.Test versus Bypass/TestServer.
 - Async process completion.
