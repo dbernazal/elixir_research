@@ -37,9 +37,9 @@ Promote these derived rule cards to curated rule cards after writing or validati
 - OTP001 is curated from Sections 7 and 8. Its runnable examples cover plain functions, bounded Task fan-out, Registry/DynamicSupervisor, keyed state, duplicate-start handling, and restart assertions.
 - ERR001 is curated from Section 6. Its runnable examples cover atom-based public errors, boundary normalization, and required configuration exceptions.
 - DATA001 is curated from Section 4. Its examples are illustrative because they use `typed_struct`, NimbleOptions, and Ecto.
-- TEST001 is curated from project review. It still needs a finished Section 13 writeup if the human-readable guide is completed later.
+- TEST001 is curated from Section 13 and project review. Its examples cover integrated tests, HTTP boundary fakes, Req.Test, Mox as a narrow fallback, async messages, monitors, and dependency injection.
 
-Priority 1 core cards are now promoted. Remaining related work is TEST001's human-readable Section 13 writeup, which is intentionally separate from the project-reviewed agent rule.
+Priority 1 is complete. All core rule cards have finished source sections or project-reviewed backing material, and each curated card links to examples.
 
 ## Priority 2: Add High-Value Rule Cards
 

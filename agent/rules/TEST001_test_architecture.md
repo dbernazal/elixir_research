@@ -1,13 +1,15 @@
 ---
 id: TEST001
 title: Test Architecture
-status: curated_from_project_review
+status: curated_from_finished_section
+source_sections:
+  - research/sections/section_13_test_architecture.md
 source_notes:
   - research/research_notes/elixir_testability_maintainability_patterns.md
 reviewed_projects:
   - /Users/d.bernazal/dev/foundry
   - /Users/d.bernazal/dev/same-game-parlays
-last_verified: 2026-05-21
+last_verified: 2026-05-26
 ---
 
 # Test Architecture

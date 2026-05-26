@@ -11,6 +11,11 @@ source_material:
     - research/sections/section_01_pattern_matching_guards.md
     - research/sections/section_02_control_flow_framework.md
     - research/sections/section_03_function_design_visibility.md
+    - research/sections/section_04_data_structure_selection.md
+    - research/sections/section_06_error_handling_architecture.md
+    - research/sections/section_07_process_design_patterns.md
+    - research/sections/section_08_supervision_fault_tolerance.md
+    - research/sections/section_13_test_architecture.md
   background_only:
     - research/research_notes/
   maintenance_only:
@@ -76,7 +81,7 @@ rules:
 
   - id: TEST001
     file: agent/rules/TEST001_test_architecture.md
-    status: curated_from_project_review
+    status: curated_from_finished_section
     tags: [testing, exunit, integration-tests, mox, bypass, testserver, req-test, req, assert-receive, dependency-injection, property-tests, maintainability]
     load_when:
       - "The design needs a test strategy."
