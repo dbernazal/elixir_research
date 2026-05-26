@@ -1,0 +1,95 @@
+version: 1
+last_updated: 2026-05-26
+purpose: "Runtime retrieval manifest for the Elixir design agent knowledge pack."
+
+always_load:
+  - agent/00_operating_instructions.md
+  - agent/01_elixir_design_principles.md
+
+source_material:
+  finished_sections:
+    - research/sections/section_01_pattern_matching_guards.md
+    - research/sections/section_02_control_flow_framework.md
+    - research/sections/section_03_function_design_visibility.md
+  background_only:
+    - research/research_notes/
+  maintenance_only:
+    - research/review_guide.md
+    - research/section_validation_checklist.md
+    - research/standardized_section_template.md
+    - research/cross_reference_system.md
+
+rules:
+  - id: PM001
+    file: agent/rules/PM001_pattern_matching_guards.md
+    status: curated_from_finished_section
+    tags: [pattern-matching, guards, function-clauses, data-shape, validation]
+    load_when:
+      - "Design branches on tuple, map, struct, list, or message shape."
+      - "The feature validates or destructures external or internal data."
+      - "The design needs guard clauses or assertive matching guidance."
+
+  - id: CF001
+    file: agent/rules/CF001_control_flow_selection.md
+    status: curated_from_finished_section
+    tags: [with, case, cond, if, control-flow, validation-pipeline]
+    load_when:
+      - "The design has multiple decision paths."
+      - "The operation has dependent steps that can fail."
+      - "The feature needs business rule branching."
+
+  - id: FN001
+    file: agent/rules/FN001_function_design_visibility.md
+    status: curated_from_finished_section
+    tags: [public-api, private-functions, bang-functions, arity, options]
+    load_when:
+      - "The task defines module APIs or function boundaries."
+      - "The design chooses public versus private functions."
+      - "The design chooses safe functions, bang functions, or options."
+
+  - id: ERR001
+    file: agent/rules/ERR001_error_handling.md
+    status: derived_from_research_notes
+    tags: [errors, tagged-tuples, exceptions, let-it-crash, supervisors]
+    load_when:
+      - "The feature has recoverable and unrecoverable failures."
+      - "The design needs error return shapes."
+      - "The operation crosses process, API, database, or external service boundaries."
+
+  - id: DATA001
+    file: agent/rules/DATA001_data_structures.md
+    status: derived_from_research_notes
+    tags: [maps, structs, keyword-lists, nimble-options, options, schemas, data-boundaries]
+    load_when:
+      - "The design chooses maps, structs, keyword lists, schemas, or changesets."
+      - "The feature handles external payloads or stable domain data."
+      - "The public API needs options or configuration."
+
+  - id: OTP001
+    file: agent/rules/OTP001_process_design.md
+    status: derived_from_research_notes
+    tags: [otp, genserver, task, agent, supervision, concurrency, state]
+    load_when:
+      - "The design involves state, concurrency, background work, messages, or fault tolerance."
+      - "The user asks whether to use GenServer, Task, Agent, Registry, or supervision."
+      - "The feature needs isolation or restart behavior."
+
+  - id: TEST001
+    file: agent/rules/TEST001_test_architecture.md
+    status: curated_from_project_review
+    tags: [testing, exunit, integration-tests, mox, bypass, testserver, req-test, req, assert-receive, dependency-injection, property-tests, maintainability]
+    load_when:
+      - "The design needs a test strategy."
+      - "The feature touches public APIs, database behavior, processes, or external services."
+      - "The implementation requires maintainability or refactoring guidance."
+      - "The test plan needs HTTP-boundary mocks, async process assertions, or dependency injection."
+
+evals:
+  - agent/evals/design_agent_eval_prompts.md
+
+examples:
+  - agent/examples/pattern_matching_examples.exs
+  - agent/examples/control_flow_examples.exs
+  - agent/examples/function_design_examples.exs
+  - agent/examples/testing_patterns_examples.exs
+  - agent/examples/testing_boundary_patterns.md
