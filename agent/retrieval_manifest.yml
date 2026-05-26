@@ -67,7 +67,7 @@ rules:
 
   - id: OTP001
     file: agent/rules/OTP001_process_design.md
-    status: derived_from_research_notes
+    status: curated_from_finished_section
     tags: [otp, genserver, task, agent, supervision, concurrency, state]
     load_when:
       - "The design involves state, concurrency, background work, messages, or fault tolerance."
@@ -93,5 +93,6 @@ examples:
   - agent/examples/function_design_examples.exs
   - agent/examples/data_structure_patterns.md
   - agent/examples/error_handling_examples.exs
+  - agent/examples/otp_process_examples.exs
   - agent/examples/testing_patterns_examples.exs
   - agent/examples/testing_boundary_patterns.md

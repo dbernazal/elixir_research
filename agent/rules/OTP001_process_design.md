@@ -1,7 +1,10 @@
 ---
 id: OTP001
 title: Process and Supervision Design
-status: derived_from_research_notes
+status: curated_from_finished_section
+source_sections:
+  - research/sections/section_07_process_design_patterns.md
+  - research/sections/section_08_supervision_fault_tolerance.md
 source_notes:
   - research/elixir_knowledge_map.md
   - research/research_notes/elixir_testability_maintainability_patterns.md
@@ -52,6 +55,12 @@ DynamicSupervisor and Registry are standard patterns when the system needs super
 
 Defer Oban-specific job guidance to a future background-jobs rule card.
 
+## Testing and Dependency Injection
+
+Pass process names, registries, supervisors, caches, observer PIDs, and clients through explicit options when isolation or runtime composition requires it.
+
+Use `start_supervised!/1`, unique names, `assert_receive`, `Process.monitor/1`, status calls, Registry lookup, or domain observer messages to test process behavior. Do not rely on arbitrary sleeps for correctness.
+
 ## Review Checks
 
 - Why is a process needed?
@@ -61,3 +70,7 @@ Defer Oban-specific job guidance to a future background-jobs rule card.
 - Can this be a plain function, Task, or existing job system instead?
 - If the process abstraction is not clearly required, did the design ask the user to clarify the architecture?
 - How will it be tested without sleeps or race-prone assertions?
+
+## Examples
+
+- `agent/examples/otp_process_examples.exs`: runnable examples for plain-function-first design, bounded Task fan-out, Registry/DynamicSupervisor, keyed process state, duplicate-start handling, and restart assertions.

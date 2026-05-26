@@ -34,16 +34,12 @@ This backlog tracks the remaining work needed before the agent pack can cover fu
 
 Promote these derived rule cards to curated rule cards after writing or validating their source sections:
 
-- OTP001 from Sections 7 and 8: Process Design and Supervision.
+- OTP001 is curated from Sections 7 and 8. Its runnable examples cover plain functions, bounded Task fan-out, Registry/DynamicSupervisor, keyed state, duplicate-start handling, and restart assertions.
 - ERR001 is curated from Section 6. Its runnable examples cover atom-based public errors, boundary normalization, and required configuration exceptions.
 - DATA001 is curated from Section 4. Its examples are illustrative because they use `typed_struct`, NimbleOptions, and Ecto.
 - TEST001 is curated from project review. It still needs a finished Section 13 writeup if the human-readable guide is completed later.
 
-Missing work for OTP001:
-
-- Finished Sections 7 and 8 content covering plain functions versus Task, GenServer, Agent, Registry, DynamicSupervisor, restart strategies, and state recovery.
-- Runnable examples for plain-function-first design, supervised processes, restart behavior, Registry/DynamicSupervisor, message protocols, and avoiding unnecessary GenServers or Agents.
-- Add more eval prompts only if new Sections 7 and 8 guidance introduces additional failure modes. Current eval coverage includes plain-functions-first process selection and failure-semantics clarification.
+Priority 1 core cards are now promoted. Remaining related work is TEST001's human-readable Section 13 writeup, which is intentionally separate from the project-reviewed agent rule.
 
 ## Priority 2: Add High-Value Rule Cards
 
