@@ -49,7 +49,7 @@ rules:
 
   - id: ERR001
     file: agent/rules/ERR001_error_handling.md
-    status: derived_from_research_notes
+    status: curated_from_finished_section
     tags: [errors, tagged-tuples, exceptions, let-it-crash, supervisors]
     load_when:
       - "The feature has recoverable and unrecoverable failures."
@@ -92,5 +92,6 @@ examples:
   - agent/examples/control_flow_examples.exs
   - agent/examples/function_design_examples.exs
   - agent/examples/data_structure_patterns.md
+  - agent/examples/error_handling_examples.exs
   - agent/examples/testing_patterns_examples.exs
   - agent/examples/testing_boundary_patterns.md

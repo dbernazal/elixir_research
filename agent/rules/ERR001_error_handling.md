@@ -1,7 +1,9 @@
 ---
 id: ERR001
 title: Error Handling and Failure Semantics
-status: derived_from_research_notes
+status: curated_from_finished_section
+source_sections:
+  - research/sections/section_06_error_handling_architecture.md
 source_notes:
   - research/research_notes/elixir_decision_guidelines.md
   - research/official_antipatterns_reference.md
@@ -65,3 +67,7 @@ Do not use exceptions as ordinary cross-process return values.
 - Are errors normalized at the right boundary?
 - Does the design hide errors that should be visible?
 - If process failure behavior is ambiguous, did the design ask for clarification?
+
+## Examples
+
+- `agent/examples/error_handling_examples.exs`: runnable examples for atom-based public errors, boundary normalization, and required configuration exceptions.
