@@ -1,7 +1,9 @@
 ---
 id: DATA001
 title: Data Structure Selection
-status: derived_from_research_notes
+status: curated_from_finished_section
+source_sections:
+  - research/sections/section_04_data_structure_selection.md
 source_notes:
   - research/research_notes/elixir_decision_guidelines.md
   - https://hexdocs.pm/nimble_options/NimbleOptions.html
@@ -59,3 +61,7 @@ Load Ecto-specific guidance only when the project uses Ecto or the user asks for
 - Should this option API use NimbleOptions instead of hand-rolled parsing?
 - Is persistence-specific validation separated from workflow-level validation?
 - Would this shape still be clear as the feature grows?
+
+## Examples
+
+- `agent/examples/data_structure_patterns.md`: illustrative typed-struct, NimbleOptions, and Ecto boundary examples.

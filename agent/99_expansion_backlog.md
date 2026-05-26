@@ -34,16 +34,10 @@ This backlog tracks the remaining work needed before the agent pack can cover fu
 
 Promote these derived rule cards to curated rule cards after writing or validating their source sections:
 
-- DATA001 from Section 4: Data Structure Selection Guide.
 - ERR001 from Section 6: Error Handling Architecture.
 - OTP001 from Sections 7 and 8: Process Design and Supervision.
+- DATA001 is curated from Section 4. Its examples are illustrative because they use `typed_struct`, NimbleOptions, and Ecto.
 - TEST001 is curated from project review. It still needs a finished Section 13 writeup if the human-readable guide is completed later.
-
-Missing work for DATA001:
-
-- Finished Section 4 content covering maps, structs, keyword lists, schemas, changesets, and NimbleOptions.
-- Runnable examples for boundary conversion, default NimbleOptions validation, and stable typed structs.
-- Add more eval prompts only if new Section 4 guidance introduces additional failure modes. Current eval coverage includes typed-struct boundary conversion and NimbleOptions defaults.
 
 Missing work for ERR001:
 

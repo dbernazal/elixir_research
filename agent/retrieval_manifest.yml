@@ -58,7 +58,7 @@ rules:
 
   - id: DATA001
     file: agent/rules/DATA001_data_structures.md
-    status: derived_from_research_notes
+    status: curated_from_finished_section
     tags: [maps, structs, keyword-lists, nimble-options, options, schemas, data-boundaries]
     load_when:
       - "The design chooses maps, structs, keyword lists, schemas, or changesets."
@@ -91,5 +91,6 @@ examples:
   - agent/examples/pattern_matching_examples.exs
   - agent/examples/control_flow_examples.exs
   - agent/examples/function_design_examples.exs
+  - agent/examples/data_structure_patterns.md
   - agent/examples/testing_patterns_examples.exs
   - agent/examples/testing_boundary_patterns.md
