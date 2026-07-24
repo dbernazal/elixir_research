@@ -1,0 +1,36 @@
+name: Validate Copilot skill
+
+on:
+  pull_request:
+    paths:
+      - "agent/01_elixir_design_principles.md"
+      - "agent/retrieval_manifest.yml"
+      - "agent/rules/**"
+      - "skills/elixir-code-review/**"
+      - "scripts/build_copilot_skill.sh"
+      - "scripts/validate_copilot_skill.rb"
+      - "scripts/validate_copilot_skill.sh"
+  push:
+    branches:
+      - main
+    paths:
+      - "agent/01_elixir_design_principles.md"
+      - "agent/retrieval_manifest.yml"
+      - "agent/rules/**"
+      - "skills/elixir-code-review/**"
+      - "scripts/build_copilot_skill.sh"
+      - "scripts/validate_copilot_skill.rb"
+      - "scripts/validate_copilot_skill.sh"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check generated references
+        run: bash scripts/build_copilot_skill.sh --check
+      - name: Validate skill structure
+        run: ruby scripts/validate_copilot_skill.rb

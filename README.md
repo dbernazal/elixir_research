@@ -39,3 +39,45 @@ ruby -e 'require "yaml"; YAML.load_file("agent/retrieval_manifest.yml"); puts "m
 ```
 
 Markdown examples that require project dependencies are clearly labeled illustrative.
+
+## GitHub Copilot Code Review
+
+The repository packages an `elixir-code-review` Agent Skill in
+`skills/elixir-code-review/`. Its reference files are generated from the
+curated `agent/` pack so the runtime guidance has one source of truth.
+
+Build and validate the skill after changing principles, the retrieval manifest,
+or a rule card:
+
+```sh
+scripts/build_copilot_skill.sh
+scripts/validate_copilot_skill.sh
+```
+
+Install the local skill and instruction templates into an Elixir repository:
+
+```sh
+scripts/install_copilot_review.sh /path/to/elixir/repository
+```
+
+The installer refuses to overwrite existing Copilot instructions or an
+existing `elixir-code-review` skill. Review and commit the generated `.github/`
+files in the target repository.
+
+To publish a version after the changes are committed and pushed:
+
+```sh
+scripts/validate_copilot_skill.sh --github
+gh skill publish --tag v0.1.0
+```
+
+After publishing, install a pinned release into a target repository with:
+
+```sh
+gh skill install dbernazal/elixir_research elixir-code-review \
+  --pin v0.1.0 \
+  --dir .github/skills
+```
+
+Use `agent/evals/copilot_code_review_eval.md` to test the installed skill with
+paired unsafe and safe draft pull requests before enabling automatic reviews.
