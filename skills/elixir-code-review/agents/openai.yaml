@@ -1,0 +1,4 @@
+interface:
+  display_name: "Elixir Code Review"
+  short_description: "Review Elixir changes with project-aware rules"
+  default_prompt: "Use $elixir-code-review to review these Elixir changes for concrete correctness and reliability problems."
