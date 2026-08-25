@@ -1,15 +1,5 @@
-defmodule OtpProcessExamples.ProcessChoice do
-  def choose(requirements) when is_map(requirements) do
-    cond do
-      Map.get(requirements, :owned_state) -> :genserver
-      Map.get(requirements, :bounded_concurrency) -> :task
-      Map.get(requirements, :lifecycle) -> :ask_for_clarification
-      true -> :plain_function
-    end
-  end
-end
-
 defmodule OtpProcessExamples.EventEnrichment do
+  # Same operation as a plain function first, then with Task only when bounded concurrency is required.
   def enrich(events, accounts) when is_list(events) and is_map(accounts) do
     Enum.map(events, &enrich_one(&1, accounts))
   end
@@ -119,14 +109,6 @@ defmodule OtpProcessExamplesTest do
   alias OtpProcessExamples.CartSupervisor
   alias OtpProcessExamples.CartWorker
   alias OtpProcessExamples.EventEnrichment
-  alias OtpProcessExamples.ProcessChoice
-
-  test "chooses plain functions before process abstractions" do
-    assert ProcessChoice.choose(%{}) == :plain_function
-    assert ProcessChoice.choose(%{bounded_concurrency: true}) == :task
-    assert ProcessChoice.choose(%{owned_state: true}) == :genserver
-    assert ProcessChoice.choose(%{lifecycle: true}) == :ask_for_clarification
-  end
 
   test "uses plain functions for deterministic transformations" do
     events = [%{id: 1, account_id: "acct-1"}]
