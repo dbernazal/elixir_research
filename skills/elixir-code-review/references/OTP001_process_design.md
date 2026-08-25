@@ -49,15 +49,15 @@ Pass process names, registries, supervisors, caches, observer PIDs, and clients 
 
 Use `start_supervised!/1`, unique names, `assert_receive`, `Process.monitor/1`, status calls, Registry lookup, or domain observer messages to test process behavior. Do not rely on arbitrary sleeps for correctness.
 
-## Review Checks
+## Review Statements
 
-- Why is a process needed?
-- What state does it own?
-- What messages form its protocol?
-- What happens on crash and restart?
-- Can this be a plain function, Task, or existing job system instead?
-- If the process abstraction is not clearly required, did the design ask the user to clarify the architecture?
-- How will it be tested without sleeps or race-prone assertions?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `OTP001.*` slugs. Report findings by
+slug rather than restating these checks.
+
+When evaluating a new process, establish: why a process is needed, what state
+it owns, what messages form its protocol, what happens on crash and restart,
+and whether a plain function, Task, or existing job system would do instead.
 
 ## Examples
 

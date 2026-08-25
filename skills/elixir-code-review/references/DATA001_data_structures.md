@@ -42,14 +42,11 @@ Do not force all domain validation into changesets if the rule belongs to a cont
 
 Load Ecto-specific guidance only when the project uses Ecto or the user asks for it.
 
-## Review Checks
+## Review Statements
 
-- Is external data validated before entering internal logic?
-- Is the data shape stable enough for a typed struct?
-- Are function options documented and validated?
-- Should this option API use NimbleOptions instead of hand-rolled parsing?
-- Is persistence-specific validation separated from workflow-level validation?
-- Would this shape still be clear as the feature grows?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `DATA001.*` slugs. Report findings by
+slug rather than restating these checks.
 
 ## Examples
 
