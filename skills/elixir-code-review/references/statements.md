@@ -218,3 +218,70 @@ Cite the slug in every reported finding.
   logs, telemetry, or span attributes and keep the error reason stable
   (see `ERR001.stable-error-atoms`). _Triggers:_ error tuples gaining
   diagnostic fields alongside new instrumentation.
+
+## REV001 — Recurring Reviewer Themes ([card](REV001_recurring_reviewer_themes.md))
+
+Distilled from recurring human review feedback on production Elixir pull
+requests.
+
+- `REV001.no-alias-as` **MUST** — Never use `alias ..., as:`. When two
+  modules share a trailing name across sibling namespaces, alias up to the
+  differentiating segment (`alias MyApp.NFL` then `NFL.Output.Config`) so
+  the differentiator stays visible at every call site. _Triggers:_ new
+  `alias` with `as:`, aliases of same-named modules from parallel domain
+  namespaces.
+- `REV001.supervision-altitude` **MUST** — Start a child under the
+  supervisor matching the scope of its concern: a domain-agnostic child moves
+  up to a shared or application-level supervisor instead of living in (or
+  being duplicated across) per-domain supervisors; a resource with genuinely
+  per-domain state runs as one parameterized, per-domain instance. _Triggers:_
+  supervision tree changes, children added to a domain-scoped supervisor.
+- `REV001.enforce-invariants-at-source` **SHOULD** — When a downstream
+  clause defends against a state upstream code should make impossible,
+  confirm reachability; if unreachable by intent, enforce the invariant at
+  the source (for example the aggregate rejecting commands until a required
+  identifier arrives) and delete the defensive clause. _Triggers:_ nil-guard
+  or no-op clauses in publishers, projectors, or handlers for
+  "should never happen" data.
+- `REV001.config-read-at-use` **SHOULD** — Read application-environment
+  values in the module that uses them, normalized in one place; do not
+  thread config through function parameters, LiveView assigns, or component
+  attributes. _Triggers:_ env-derived values passed as parameters or assigns,
+  new component attrs carrying config.
+- `REV001.nil-rules-with-owner` **SHOULD** — Centralize a domain "nil means
+  X" rule in one function on the module that owns the data; public functions
+  elsewhere require resolved values via guards and `nil`-free `@spec`s.
+  _Triggers:_ `nil` in the `@spec` of new public functions, the same nil
+  fallback duplicated across call sites.
+- `REV001.justify-numeric-tunables` **SHOULD** — Every numeric tunable
+  (batch size, retention window, interval, timeout) has a stated rationale
+  sized for the slowest resource it hits, and distinct bounds do not share
+  one value — an outer bound must exceed the inner bound it wraps.
+  _Triggers:_ new batch sizes, retention or sweep settings, timeout values,
+  one constant reused for different bounds.
+- `REV001.metrics-need-consumers` **SHOULD** — Do not register metrics or
+  emit telemetry events nothing consumes; carry per-run operational detail in
+  span attributes (with an error status on failure) and add metrics only when
+  a dashboard or alert needs the aggregation. _Triggers:_ new StatsD/metric
+  registrations, `:telemetry.execute/3` with no handler or metric.
+- `REV001.risky-io-off-state-owners` **SHOULD** — A process owning critical
+  state (especially a named ETS table) must not run failure-prone IO inline;
+  run it via `Task.Supervisor.async_nolink/2` bounded by `Task.yield/2` +
+  `Task.shutdown/2`, and handle failure in that one place rather than a
+  parallel `rescue`. _Triggers:_ Repo or HTTP calls inside a GenServer that
+  owns ETS or other unrecoverable state.
+- `REV001.specs-state-mechanics` **SHOULD** — Specification documents state
+  current rules only: no supersession narration, change history, dates, or
+  ticket references; rewrite stale sections instead of appending corrections.
+  _Triggers:_ edits under `specs/`.
+- `REV001.right-size-helpers` **SHOULD** — Inline single-use private
+  functions that merely relocate a few readable lines (match the surrounding
+  module's idiom); name module attributes for the value they hold, not one
+  caller's use of it; comments state the actual reason the code exists.
+  _Triggers:_ new single-caller `defp`, new module attributes, comments
+  justifying guards.
+- `REV001.mirror-sibling-domain` **SHOULD** — A new domain namespace
+  paralleling an existing one mirrors the sibling's structure (catalogs,
+  warmers, supervisors, layout); shared wire contracts get a parity test;
+  deviations are explicit, not hollow placeholders. _Triggers:_ new modules
+  under a domain namespace that parallels an established one.

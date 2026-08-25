@@ -49,6 +49,10 @@ not report them.
      testing, process tests, dependency injection
    - [OBS001](references/OBS001_observability.md) — telemetry, metrics, tags,
      durations, instrumentation, logging
+   - [REV001](references/REV001_recurring_reviewer_themes.md) — aliasing,
+     supervision altitude, invariants at the source, config threading,
+     numeric tunables, unconsumed metrics, spec-doc hygiene, sibling-domain
+     parity (distilled from recurring human review feedback)
 4. Use [the design principles](references/01_elixir_design_principles.md) when
    a change crosses several of these concerns.
 5. Confirm that each suspected violation is reachable and introduced or
@@ -92,6 +96,11 @@ summary so it stays visible. Otherwise report the findings as text.
 - Tests that mock ordinary internal implementation instead of observable
   behavior.
 - Missing coverage for newly introduced success, failure, or boundary paths.
+- Children started under a supervisor that does not match their scope, and
+  defensive clauses downstream of an invariant the source should enforce.
+- Renamed aliases (`as:`) or aliases that hide which of two same-named
+  domain modules is being called.
+- Unjustified numeric tunables and metrics or telemetry with no consumer.
 
 ## Out of scope: mechanically checkable issues
 
