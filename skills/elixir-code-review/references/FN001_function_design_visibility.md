@@ -39,10 +39,8 @@ Use bang functions when failure is exceptional, unrecoverable at the call site, 
 - Prefer NimbleOptions for public or complex option APIs that need documented validation.
 - Add arities only when they improve readability and preserve a clear default path.
 
-## Review Checks
+## Review Statements
 
-- Is the public API minimal and domain-centered?
-- Are private helpers hidden unless they are real reusable operations?
-- Are return shapes consistent with expected caller behavior?
-- Are bang functions intentional and paired with safe variants when useful?
-- Are long parameter lists replaced with structured data?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `FN001.*` slugs. Report findings by
+slug rather than restating these checks.

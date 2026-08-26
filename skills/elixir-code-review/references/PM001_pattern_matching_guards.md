@@ -35,10 +35,8 @@ Use pattern matching when data shape determines behavior. Use guards when shape 
 - Use `String.to_existing_atom/1` only when input is already constrained to known existing atoms.
 - Prefer string keys for unbounded external keys.
 
-## Review Checks
+## Review Statements
 
-- Are all accepted shapes explicit?
-- Are invalid external shapes reported instead of masked?
-- Are guards limited to allowed guard expressions?
-- Is there any dynamic atom creation from external input?
-- Would a new team member understand which clause handles which case?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `PM001.*` slugs. Report findings by
+slug rather than restating these checks.

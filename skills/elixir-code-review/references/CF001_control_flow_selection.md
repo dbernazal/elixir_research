@@ -40,10 +40,8 @@ Use `cond` for business rules where each branch is a boolean expression and firs
 
 Extract complex boolean branches into named predicate functions.
 
-## Review Checks
+## Review Statements
 
-- Does the construct match the shape of the decision?
-- Are success and error return shapes consistent?
-- Is `with ... else` doing too much?
-- Could a complex branch become a named function?
-- Are side effects explicit and tested?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `CF001.*` slugs. Report findings by
+slug rather than restating these checks.

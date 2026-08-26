@@ -72,17 +72,15 @@ Mark tests `async: false` when they mutate global configuration, global exporter
 - Avoid making private helpers public only for tests.
 - Provide a deterministic observation path for background work: message, monitor, ack, event, telemetry span, or queryable status.
 
-## Review Checks
+## Review Statements
 
-- Does the test plan cover success, expected failure, and boundary cases?
-- Are external services covered by integrated or protocol-level tests before falling back to behaviour mocks?
-- Are process tests deterministic?
-- Are database tests scoped to public context behavior?
-- Would the tests catch a broken return shape or swallowed error?
-- Is HTTP behavior tested at the right level: integrated/fake server for request/response protocol, Mox only for narrow call-contract tests?
-- Do async tests assert completion or state with messages, monitors, acks, or status calls instead of sleeps?
-- Are injected dependencies per-test and supervised where possible?
-- Are global resources forcing `async: false`?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `TEST001.*` slugs. Report findings by
+slug rather than restating these checks.
+
+When evaluating a test plan, also confirm the tests would catch a broken
+return shape or swallowed error, and that database tests are scoped to public
+context behavior.
 
 ## Examples
 

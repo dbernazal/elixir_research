@@ -49,13 +49,11 @@ Do not use exceptions as ordinary cross-process return values.
 - Avoid converting every error into a string too early.
 - Put logging, telemetry, metrics, and diagnostic context in the Observability guidance rather than overloading error return shapes.
 
-## Review Checks
+## Review Statements
 
-- Is each failure classified as expected, exceptional, or process-fatal?
-- Can callers pattern match on documented error shapes?
-- Are errors normalized at the right boundary?
-- Does the design hide errors that should be visible?
-- If process failure behavior is ambiguous, did the design ask for clarification?
+The checkable review statements for this card are indexed in
+[statements.md](statements.md) under the `ERR001.*` slugs. Report findings by
+slug rather than restating these checks.
 
 ## Examples
 
