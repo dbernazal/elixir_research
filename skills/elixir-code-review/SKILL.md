@@ -38,7 +38,8 @@ not report them.
    - [CF001](references/CF001_control_flow_selection.md) — `with`, `case`,
      `cond`, `if`, branching
    - [FN001](references/FN001_function_design_visibility.md) — public
-     functions, visibility, arities, options, return contracts
+     functions, private-function extraction, visibility, arities, options,
+     return contracts
    - [DATA001](references/DATA001_data_structures.md) — maps, structs,
      keyword lists, schemas, changesets
    - [ERR001](references/ERR001_error_handling.md) — tagged tuples,
@@ -88,6 +89,8 @@ summary so it stays visible. Otherwise report the findings as text.
 
 - Unsafe handling of untrusted external data or dynamic atom creation.
 - Broken or inconsistent public return contracts.
+- Private functions that add indirection without clearer intent, sufficient reuse,
+  and cohesive behavior that every caller must share.
 - Expected failures that are swallowed, leaked, or raised unexpectedly.
 - Processes without a concrete state, concurrency, lifecycle, isolation, or
   fault-recovery requirement.

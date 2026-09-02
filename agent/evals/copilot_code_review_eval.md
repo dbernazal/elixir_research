@@ -55,6 +55,20 @@ contract, solely so a test can call it.
 Expected finding: test through the existing public API or extract a focused
 module only when the operation is independently reusable.
 
+## FN001: Unjustified Private Function
+
+Unsafe: extract a private function used by one or two callers when its name is
+less explicit than the inlined implementation, such as replacing a visible
+struct construction with `build_event(command)`.
+
+Expected finding: inline the implementation because the helper does not make
+the intent clearer, has fewer than three call sites, and owns no cohesive
+behavior that every caller must change together.
+
+Safe: retain a private function only when its name communicates the operation
+more clearly than its body, at least three distinct call sites need it, and the
+entire behavior is one invariant that must remain consistent across them.
+
 ## DATA001: Unvalidated External Shape
 
 Unsafe: pass a raw string-keyed HTTP payload throughout domain modules and

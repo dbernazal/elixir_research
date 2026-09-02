@@ -143,11 +143,6 @@ not append the correction alongside it.
 
 ## Right-Size Helpers, Names, and Comments
 
-Inline a single-use private function whose body is a few lines that read
-fine in place; a helper that only relocates code adds a name to chase without
-adding meaning. Match the surrounding module — if the aggregate builds a
-struct inline at five other sites, the sixth should too.
-
 Name module attributes for the value they hold, not for one caller's use of
 it: `@decimal_zero`, not `@no_increment` — the intent belongs in a comment at
 the use site, freeing the name to be reusable.

@@ -21,9 +21,13 @@ Do not make a helper public only to test it. Test through the public API unless 
 
 ## Private Functions
 
-Make a function private when it assumes internal state, internal ordering, or a narrow calling context.
+Keep code inline by default. Introduce a private function only when all three conditions hold:
 
-Private helpers should clarify the public function, not create a hidden second API.
+1. The function call communicates the intent or implementation more clearly than the inlined code.
+2. The function is used at three or more distinct call sites.
+3. The function encapsulates cohesive behavior or an invariant whose complete implementation applies at every call site and must change as one unit.
+
+If any condition is missing, keep the code inline even when that duplicates a few lines. Shortening a caller, removing repetition, wrapping a struct, forwarding arguments, toggling one field, or hiding a fixed sequence of readable operations does not by itself warrant a private function.
 
 ## Return Shapes
 
