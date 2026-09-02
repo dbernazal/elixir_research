@@ -68,6 +68,13 @@ Cite the slug in every reported finding.
   is an intended API, a real reusable operation, a behaviour callback, or a
   stable composition point; never make a helper public only to test it.
   _Triggers:_ new `def` in a module with an established public surface.
+- `FN001.justified-private-function` **SHOULD** — Keep code inline unless a
+  private function satisfies all three criteria: its call communicates intent
+  or implementation more clearly than the inlined code, it has at least three
+  distinct call sites, and it encapsulates cohesive behavior or an invariant
+  whose complete implementation applies everywhere and must change as one
+  unit. Repetition or a shorter caller alone does not justify the indirection.
+  _Triggers:_ new `defp`, code moved behind a private function.
 - `FN001.bang-delegates` **SHOULD** — When safe and bang variants both exist,
   the bang form delegates to the safe form and raises with useful context.
   _Triggers:_ paired `foo/1` and `foo!/1` definitions.
@@ -274,12 +281,11 @@ requests.
   current rules only: no supersession narration, change history, dates, or
   ticket references; rewrite stale sections instead of appending corrections.
   _Triggers:_ edits under `specs/`.
-- `REV001.right-size-helpers` **SHOULD** — Inline single-use private
-  functions that merely relocate a few readable lines (match the surrounding
-  module's idiom); name module attributes for the value they hold, not one
-  caller's use of it; comments state the actual reason the code exists.
-  _Triggers:_ new single-caller `defp`, new module attributes, comments
-  justifying guards.
+- `REV001.right-size-helpers` **SHOULD** — Name module attributes for
+  the value they hold, not one caller's use of it; comments state the actual
+  reason the code exists. Private-function extraction is covered by
+  `FN001.justified-private-function`.
+  _Triggers:_ new module attributes, comments justifying guards.
 - `REV001.mirror-sibling-domain` **SHOULD** — A new domain namespace
   paralleling an existing one mirrors the sibling's structure (catalogs,
   warmers, supervisors, layout); shared wire contracts get a parity test;
